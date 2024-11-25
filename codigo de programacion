@@ -1,0 +1,42 @@
+import random
+
+def mostrar_instrucciones():
+    print("\n** Instrucciones **")
+    print("1. Piedra vence a Tijeras.")
+    print("2. Tijeras vence a Papel.")
+    print("3. Papel vence a Piedra.")
+    print("Elige sabiamente tu opción. ¡Diviértete!")
+
+def jugar_piedra_papel_tijeras():
+    opciones = ["piedra", "papel", "tijeras"]
+    while True:
+        print("\nEscribe tu elección: piedra, papel o tijeras (o 'salir' para terminar).")
+        usuario = input("Tu elección: ").lower()
+        if usuario == "salir":
+            print("Gracias por jugar. ¡Hasta luego!")
+            break
+        elif usuario not in opciones:
+            print("Elección inválida. Intenta nuevamente.")
+            continue
+
+        computadora = random.choice(opciones)
+        print(f"La computadora eligió: {computadora}")
+
+        if usuario == computadora:
+            print("¡Es un empate!")
+        elif (usuario == "piedra" and computadora == "tijeras") or \
+             (usuario == "tijeras" and computadora == "papel") or \
+             (usuario == "papel" and computadora == "piedra"):
+            print("¡Ganaste!")
+        else:
+            print("¡Perdiste!")
+
+# Flujo principal del programa
+print("¡Bienvenido al juego de Piedra, Papel o Tijeras!")
+respuesta = input("¿Sabes cómo jugar? (sí/no): ").lower()
+
+if respuesta == "no":
+    mostrar_instrucciones()
+
+print("\n¡Comencemos el juego!")
+jugar_piedra_papel_tijeras()
